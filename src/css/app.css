@@ -1,0 +1,49 @@
+/*
+    Document   : override
+    Created on : <date>
+    Author     : <author>
+    Description:
+        This is where any of your application specific styles should be included
+*/
+.thumb {
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #000;
+    margin: 10px 5px 0 0;
+}
+.rect{
+    width:100px;
+    height: 100px;
+    left:50px;
+    position:absolute; 
+    border: 2px solid red
+}
+
+.rect span{
+    font-size: 30px;
+    font-weight: bold;
+    color: yellow;
+    text-shadow: 0px 0px 3px #000, -1px -1px #000, 1px 1px #000;
+}
+
+.imageContainer{
+    position: relative;
+    transform-origin: top left;
+    transform: scale(0.4); /* Equal to scaleX(0.7) scaleY(0.7) */
+   
+}
+#pieChartContainer
+{
+    position: absolute;
+    left:650px;
+   
+       
+}
+#areaRestriction{
+    display: block;
+    overflow: hidden;
+    max-width: 600px;
+    max-height: 400px;
+}
+
+  

@@ -1,0 +1,30 @@
+box: node
+build:
+  steps:
+    - npm-install
+    - npm-test
+    - script:
+        name: oracle jet build
+        code: |
+          npm install -g @oracle/ojet-cli
+          ojet build
+    - script:
+        name: copy code to output
+        code: cp -r web "$WERCKER_OUTPUT_DIR"   
+push-release:
+  box:
+    id: nginx:alpine
+    cmd: /bin/sh
+  steps:
+    - script:
+      name: mv static files
+      code: |
+        rm -rf /usr/share/nginx/html/*
+        mv web/* /usr/share/nginx/html
+    - internal/docker-push:
+        repository: thebeebs/werckerworkshop
+        username: $DOCKER_USERNAME
+        password: $DOCKER_PASSWORD
+        registry: https://registry.hub.docker.com/v2
+        tag: $WERCKER_GIT_COMMIT
+        cmd: nginx -g 'daemon off;'

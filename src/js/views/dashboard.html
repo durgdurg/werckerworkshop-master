@@ -1,0 +1,49 @@
+<!--
+ Copyright (c) 2014, 2017, Oracle and/or its affiliates.
+ The Universal Permissive License (UPL), Version 1.0
+ -->
+<div class="oj-hybrid-padding">
+        <div data-bind="visible: pieSeriesValue != null" id="pieChartContainer">
+                <oj-chart id="pieChart"
+                type="pie" 
+                series="[[pieSeriesValue]]"
+                animation-on-display="auto"
+                animation-on-data-change="auto"
+                style-defaults.three-d-effect="on"
+                hover-behavior="dim"
+                style="max-width:500px;width:100%;height:350px;">
+                </oj-chart> 
+                </div>
+<div id="areaRestriction">             
+<div id="imageContainer" class="imageContainer" data-bind="if: imageFile()">
+    <div data-bind="foreach: faces">
+        <div data-bind="click: $data.showData" >
+            <div class="rect" data-bind="style: { top: top, left: left, width: width, height: height }" >
+                <span data-bind="text: rank"></span>
+              
+            </div> 
+        </div> 
+    </div>
+
+    <img data-bind = "attr: {'src': imageFile().src, 'title': imageFile().name}"/>
+    
+</div>
+</div>
+
+<oj-progress data-bind="visible: uploading" style="width:600px" value="{{progressValue}}"></oj-progress>
+
+    <h1>Upload an Image</h1>
+    <div>
+        Upload an image of the audience to learn more about them.
+    </div>
+    <br />
+  <oj-file-picker accept="[[acceptArr]]"
+  selection-mode="[[multipleStr]]"
+  on-select='[[selectListener]]'>
+</oj-file-picker>
+<div style="margin-top: 10px"></div>
+
+
+</div>
+</div>
+</div>

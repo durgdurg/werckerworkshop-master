@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontendREPLACE_WITH_WERCKER_APPLICATION_OWNER_NAME
+  labels:
+    app: audienceanalyserREPLACE_WITH_WERCKER_APPLICATION_OWNER_NAME
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: audienceanalyserREPLACE_WITH_WERCKER_APPLICATION_OWNER_NAME
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: frontendREPLACE_WITH_WERCKER_APPLICATION_OWNER_NAME
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: audienceanalyserREPLACE_WITH_WERCKER_APPLICATION_OWNER_NAME
+    spec:
+      containers:
+      - name: beebs
+        image: REPLACE_WITH_DOCKER_REPOSITORY:REPLACE_WITH_WERCKER_GIT_COMMIT
+        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        env:
+        - name: GET_HOSTS_FROM
+          value: dns
+        ports:
+        - containerPort: 80
